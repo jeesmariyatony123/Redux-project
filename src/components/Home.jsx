@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { add } from '../store/cartSlice';
 import { getProducts } from '../store/productSlice';
 import Alert from 'react-bootstrap/Alert'
+import StatusCode from '../utils/StatusCode';
 
 const Home = () => {
 
@@ -22,10 +23,10 @@ const Home = () => {
         
     }, [])
 
-    if(status==='loading'){
+    if(status===StatusCode.LOADING){
         return <h4 className='pt-5 mt-5 text-center'>Loading...</h4>
     }
-    if(status==='error'){
+    if(status===StatusCode.ERROR){
         return <Alert className='mt-5' key="danger" variant="danger">Something went wrong ! Try again Later...</Alert>
     }
     const addToCart = (products) => {
